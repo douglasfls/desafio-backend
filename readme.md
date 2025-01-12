@@ -1,5 +1,4 @@
-![Build]
-(https://github.com/douglasfls/desafio-backend/workflows/.NET/badge.svg)
+![Build](https://github.com/douglasfls/desafio-backend/workflows/.NET/badge.svg)
 
 Desafio Backend
 =
