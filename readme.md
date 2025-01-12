@@ -1,3 +1,5 @@
+![Github Actions Status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=main)
+
 Desafio Backend
 =
 
