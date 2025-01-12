@@ -19,7 +19,7 @@ public static class AuthenticationConfiguration
         builder.Services.Configure<JwtConfigration>(builder.Configuration.GetSection(JwtConfigration.SectionName));
         var jwtConfigration = builder.Configuration.GetSection(JwtConfigration.SectionName)
             .Get<JwtConfigration>();
-
+        builder.Services.AddSingleton(jwtConfigration);
         builder.Services.AddScoped<TokenGenerator>();
         builder.Services.AddAuthorization();
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
