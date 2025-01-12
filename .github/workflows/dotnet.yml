@@ -20,6 +20,8 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 9.0.x
+    - name: Reset Workloads
+      run: dotnet workload uninstall aspire 
     - name: Install Workloads
       run: dotnet workload install aspire
     - name: Restore dependencies
