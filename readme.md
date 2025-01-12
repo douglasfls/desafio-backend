@@ -1,4 +1,5 @@
-![Github Actions Status](https://github.com/douglasfls/actions/workflows/main.yml/badge.svg?branch=main)
+![Build]
+(https://github.com/douglasfls/desafio-backend/workflows/.NET/badge.svg)
 
 Desafio Backend
 =
