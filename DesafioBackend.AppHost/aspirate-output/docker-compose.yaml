@@ -1,0 +1,42 @@
+services:
+  postgres:
+    container_name: "postgres"
+    image: "docker.io/library/postgres:17.0"
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=scram-sha-256"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+    - "volumemount-desafiobackend-postgres:/var/lib/postgresql/data"
+    ports:
+    - target: 5432
+      published: 6379
+    restart: unless-stopped
+  migrationService:
+    container_name: "migrationService"
+    image: "migrationservice:latest"
+    environment:
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+      ConnectionStrings__desafio-backend: "Host=postgres;Port=6379;Username=postgres;Password=postgres;Database=desafio-backend"
+    restart: unless-stopped
+  apiservice:
+    container_name: "apiservice"
+    image: "apiservice:latest"
+    environment:
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+      OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+      ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
+      HTTP_PORTS: "8080"
+      ConnectionStrings__desafio-backend: "Host=postgres;Port=6379;Username=postgres;Password=postgres;Database=desafio-backend"
+    ports:
+    - target: 8080
+      published: 10000
+    - target: 8443
+      published: 10001
+    restart: unless-stopped
+volumes:
+  volumemount-desafiobackend-postgres: {}

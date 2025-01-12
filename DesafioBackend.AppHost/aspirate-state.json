@@ -1,0 +1,31 @@
+{
+  "projectPath": ".",
+  "outputPath": "aspirate-output",
+  "containerImageTags": [
+    "latest"
+  ],
+  "containerBuilder": "docker",
+  "outputFormat": "compose",
+  "privateRegistryEmail": "aspir8@aka.ms",
+  "secrets": {
+    "salt": "S2vAd/IqBJp8nat/",
+    "hash": "BfUAYc69cXB5tb4PBiPhFxkwpVv\u002B/QLJsgCLSLodh6E=",
+    "secrets": {
+      "username": {
+        "value": "S2vAd/IqBJp8nat/Jqu22HB/nhkKeNpW4HT\u002BIwOl0EZ0Vkq1"
+      },
+      "password": {
+        "value": "S2vAd/IqBJp8nat/Jqu22HB/nhkKeNpW4HT\u002BIwOl0EZ0Vkq1"
+      },
+      "postgres": {
+        "POSTGRES_PASSWORD": "S2vAd/IqBJp8nat/Jqu22HB/nhkKeNpW4HT\u002BIwOl0EZ0Vkq1"
+      },
+      "migrationService": {
+        "ConnectionStrings__desafio-backend": "S2vAd/IqBJp8nat/yU8vvueo30TscZifz3acqzul0EYuVEC1MyAcbQCTWA1h/zucoAqdZ38XtwxH39FeTEDQggCLRRf36k2KRkK6sgZjU9Z4U7EwvGXkEnQhrcqsNRjfcIIbKfEOxVbAryYQYV4a0g=="
+      },
+      "apiservice": {
+        "ConnectionStrings__desafio-backend": "S2vAd/IqBJp8nat/yU8vvueo30TscZifz3acqzul0EYuVEC1MyAcbQCTWA1h/zucoAqdZ38XtwxH39FeTEDQggCLRRf36k2KRkK6sgZjU9Z4U7EwvGXkEnQhrcqsNRjfcIIbKfEOxVbAryYQYV4a0g=="
+      }
+    }
+  }
+}
