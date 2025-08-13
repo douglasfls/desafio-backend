@@ -4,6 +4,7 @@ using DesafioBackend.ApiService.Scalar;
 using DesafioBackend.Application;
 using DesafioBackend.Application.WebModules;
 using DesafioBackend.Core.Data;
+using Microsoft.AspNetCore.OutputCaching;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,6 +22,13 @@ builder.Services.AddServices();
 
 builder.Services.AddProblemDetails();
 
+builder.Services.AddOutputCache(options =>
+{
+    options.DefaultExpirationTimeSpan = TimeSpan.FromMinutes(1);
+    options.AddBasePolicy(builder =>
+        builder.Cache());
+});
+
 builder.Services.AddOpenApi("v1", options =>
 {
     options.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
@@ -31,6 +39,7 @@ builder.AddAuthenticationConfiguration();
 var app = builder.Build();
 
 app.UseExceptionHandler();
+app.UseOutputCache();
 
 if (app.Environment.IsDevelopment())
 {
